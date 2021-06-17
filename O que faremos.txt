@@ -1,11 +1,10 @@
-Tema: Sistema para estacionamento rotativo
+Nomes: Lucas Machado, Luiz Kischel, Mateus Freitas
 
+
+Tema: Sistema para estacionamento rotativo
 
 Banco de dados: PG
 Tecnologias: React e NodeJS
-
-
-
 
 Telas:
 
