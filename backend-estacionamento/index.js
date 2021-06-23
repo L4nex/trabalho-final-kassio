@@ -7,3 +7,5 @@ app.use(express.json());
 app.use(cors());
 
 app.listen(3333);
+
+console.log("tasadasd");
