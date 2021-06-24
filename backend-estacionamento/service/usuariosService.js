@@ -7,13 +7,18 @@ exports.criarUsuario = function (usuario) {
 exports.alterarUsuario = function (usuario) {
   return usuarioData.alterarUsuario(usuario);
 };
-exports.deletaUsuario = function (id) {
-  return usuarioData.deletaUsuario(id);
+
+exports.deletarUsuario = function (id) {
+  return usuarioData.deletarUsuario(id);
 };
 
-exports.recuperaUsuario = function (id) {
-  return usuarioData.recuperaUsuario(id);
+exports.recuperarUsuario = function (id) {
+  return usuarioData.recuperarUsuario(id);
 };
-exports.recuperaUsuarios = function () {
-  return usuarioData.recuperaUsuarios();
+
+exports.mostrarUsuario = function (id) {
+  return usuarioData.mostrarUsuario(id);
+};
+exports.listarUsuarios = function () {
+  return usuarioData.listarUsuarios();
 };

@@ -1,4 +1,3 @@
-const { func } = require('../database/database')
 const database = require('../database/database')
 
 exports.criarUsuario = function(usuario){
@@ -13,20 +12,28 @@ exports.alterarUsuario = function(usuario){
         [usuario.nome, usuario.email, usuario.telefone, usuario.senha, usuario.foto, usuario.tipo_usuario, new Date(), usuario.id]
     )
 }
-exports.deletaUsuario = function(id){
+exports.deletarUsuario = function(id){
     return database.query(
-        'DELETE FROM public.usuarios WHERE id=$1;',
+        'UPDATE public.usuarios SET active = false WHERE id=$1; returning *',
         [id]
     )
 }
 
-exports.recuperaUsuario = function(id){
+exports.mostrarUsuario = function(id){
     return database.query(
         'SELECT * FROM public.usuarios where id = $1;',
         [id]
     )
 }
-exports.recuperaUsuarios = function(){
+
+exports.recuperarUsuario = function(id){
+    return database.one(
+        'UPDATE public.usuarios SET active = true WHERE id=$1; returning *',
+        [id]
+    )
+}
+
+exports.listarUsuarios = function(){
     return database.query(
         'SELECT * FROM public.usuarios;'
     )
