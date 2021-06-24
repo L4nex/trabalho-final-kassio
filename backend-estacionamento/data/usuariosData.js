@@ -20,7 +20,7 @@ exports.deletarUsuario = function(id){
 }
 
 exports.recuperarUsuario = function(id){
-    return database.one(
+    return database.none(
         'UPDATE public.usuarios SET active = true WHERE id=$1;',
         [id]
     )

@@ -18,7 +18,7 @@ router.put("/usuario/:id", async function (req, res) {
 
 router.delete("/usuario/:id", async function (req, res) {
   const idUsuario = req.params.id;
-  await usuariosService.deletaUsuario(idUsuario);
+  await usuariosService.deletarUsuario(idUsuario);
   res.json({message: "Usuário deletado com sucesso!", id: idUsuario})
 });
 
