@@ -15,6 +15,7 @@ router.put("/usuario", async function (req, res) {
 router.delete("/usuario/:id", async function (req, res) {
   const idUsuario = req.params.id;
   await usuariosService.deletaUsuario(idUsuario);
+  res.json({message: "Registro excluido com sucesso!"})
 });
 router.get("/usuario/:id", async function (req, res) {
   const idUsuario = req.params.id;
