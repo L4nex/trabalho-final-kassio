@@ -3,31 +3,36 @@ const router = express.Router();
 const veiculosService = require("../service/veiculosService");
 
 router.post("/veiculo", async function (req, res) {
-  const veiculo = req.body;
+  const veiculo = req.body.veiculo;
   const novoVeiculo = await veiculosService.criarVeiculo(veiculo);
-  res.json(novoVeiculo);
+  res.json({message: "Veículo criado com sucesso!", id: novoVeiculo.id})
 });
 
-router.put("/veiculo", async function (req, res) {
-  const veiculo = req.body;
-  const alterarVeiculo = await veiculosService.alterarVeiculo(veiculo);
+router.put("/veiculo/:id", async function (req, res) {
+  const idVeiculo = req.params.id;
+  const veiculo = req.body.veiculo;
+  const alterarVeiculo = await veiculosService.alterarVeiculo(veiculo, idVeiculo);
+  res.json({message: "Veículo editado com sucesso!"});
   res.json(alterarVeiculo);
-});
+}); 
 
 router.delete("/veiculo/:id", async function (req, res) {
   const idVeiculo = req.params.id;
   await veiculosService.deletarVeiculo(idVeiculo);
+  res.json({message: "Veículo deletado com sucesso!", id: idVeiculo})
 }); 
 
 router.patch("/veiculo/:id/recuperar", async function (req, res) {
     const idVeiculo = req.params.id;
     await veiculosService.recuperarVeiculo(idVeiculo);
+    res.json({message: "Veículo restaurado com sucesso!"})
+    res.json(idVeiculo);
   });
 
 router.get("/veiculo/:id", async function (req, res) {
   const idVeiculo = req.params.id;
   const veiculo = await veiculosService.mostrarVeiculo(idVeiculo);
-  res.json(veiculo);
+  res.json(veiculo); 
 });
 
 router.get("/veiculos", async function (req, res) {
