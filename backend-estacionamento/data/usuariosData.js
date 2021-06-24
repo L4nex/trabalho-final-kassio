@@ -14,7 +14,14 @@ exports.alterarUsuario = function(usuario){
 }
 exports.deletarUsuario = function(id){
     return database.query(
-        'UPDATE public.usuarios SET active = false WHERE id=$1; returning *',
+        'UPDATE public.usuarios SET active = false WHERE id=$1;',
+        [id]
+    )
+}
+
+exports.recuperarUsuario = function(id){
+    return database.one(
+        'UPDATE public.usuarios SET active = true WHERE id=$1;',
         [id]
     )
 }
@@ -22,13 +29,6 @@ exports.deletarUsuario = function(id){
 exports.mostrarUsuario = function(id){
     return database.query(
         'SELECT * FROM public.usuarios where id = $1;',
-        [id]
-    )
-}
-
-exports.recuperarUsuario = function(id){
-    return database.one(
-        'UPDATE public.usuarios SET active = true WHERE id=$1; returning *',
         [id]
     )
 }

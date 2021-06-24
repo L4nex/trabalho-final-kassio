@@ -13,15 +13,15 @@ exports.alterarVeiculo = function(veiculo){
     )
 }
 exports.deletarVeiculo = function(id){
-    return database.one(
-        'UPDATE public.veiculos SET active = false WHERE id=$1; returning *',
+    return database.none(
+        'UPDATE public.veiculos SET active = false WHERE id=$1;',
         [id]
     )
 }
 
 exports.recuperarVeiculo = function(id){
-    return database.one(
-        'UPDATE public.veiculos SET active = true WHERE id=$1; returning *',
+    return database.none(
+        'UPDATE public.veiculos SET active = true WHERE id=$1;',
         [id]
     )
 }

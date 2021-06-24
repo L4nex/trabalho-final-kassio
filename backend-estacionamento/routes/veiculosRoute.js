@@ -15,18 +15,18 @@ router.put("/veiculo", async function (req, res) {
 });
 
 router.delete("/veiculo/:id", async function (req, res) {
-  const idUsuario = req.params.id;
-  await veiculosService.deletarVeiculo(idUsuario);
-});
+  const idVeiculo = req.params.id;
+  await veiculosService.deletarVeiculo(idVeiculo);
+}); 
 
-router.patch("/veiculo/:id", async function (req, res) {
-    const idUsuario = req.params.id;
-    await veiculosService.recuperarVeiculo(idUsuario);
+router.patch("/veiculo/:id/recuperar", async function (req, res) {
+    const idVeiculo = req.params.id;
+    await veiculosService.recuperarVeiculo(idVeiculo);
   });
 
 router.get("/veiculo/:id", async function (req, res) {
-  const idUsuario = req.params.id;
-  const veiculo = await veiculosService.mostrarVeiculo(idUsuario);
+  const idVeiculo = req.params.id;
+  const veiculo = await veiculosService.mostrarVeiculo(idVeiculo);
   res.json(veiculo);
 });
 

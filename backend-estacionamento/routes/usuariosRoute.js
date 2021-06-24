@@ -20,7 +20,7 @@ router.delete("/usuario/:id", async function (req, res) {
   res.json({message: "Registro excluido com sucesso!"})
 });
 
-router.patch("/usuario/:id", async function (req, res) {
+router.patch("/usuario/:id/recuperar", async function (req, res) {
   const idUsuario = req.params.id;
   await usuariosService.recuperarUsuario(idUsuario);
 });

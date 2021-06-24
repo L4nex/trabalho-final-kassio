@@ -1,11 +1,11 @@
 const veiculoData = require("../data/veiculosData");
 
-exports.criarVeiculo = function (usuario) {
-  return veiculoData.criarVeiculo(usuario);
+exports.criarVeiculo = function (veiculo) {
+  return veiculoData.criarVeiculo(veiculo);
 };
 
-exports.alterarUsuario = function (usuario) {
-  return veiculoData.alterarUsuario(usuario);
+exports.alterarVeiculo = function (veiculo) {
+  return veiculoData.alterarVeiculo(veiculo);
 };
 
 exports.deletarVeiculo = function (id) {
