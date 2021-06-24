@@ -4,8 +4,8 @@ exports.criarUsuario = function (usuario) {
   return usuarioData.criarUsuario(usuario);
 };
 
-exports.alterarUsuario = function (usuario) {
-  return usuarioData.alterarUsuario(usuario);
+exports.alterarUsuario = function (usuario, id) {
+  return usuarioData.alterarUsuario(usuario, id);
 };
 
 exports.deletarUsuario = function (id) {

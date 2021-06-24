@@ -25,8 +25,7 @@ router.delete("/veiculo/:id", async function (req, res) {
 router.patch("/veiculo/:id/recuperar", async function (req, res) {
     const idVeiculo = req.params.id;
     await veiculosService.recuperarVeiculo(idVeiculo);
-    res.json({message: "Veículo restaurado com sucesso!"})
-    res.json(idVeiculo);
+    res.json({message: "Veículo restaurado com sucesso!", id: idVeiculo})
   });
 
 router.get("/veiculo/:id", async function (req, res) {
