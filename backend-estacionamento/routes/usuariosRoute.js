@@ -31,7 +31,11 @@ router.patch("/usuario/:id/recuperar", async function (req, res) {
 router.get("/usuario/:id", async function (req, res) {
   const idUsuario = req.params.id;
   const usuario = await usuariosService.mostrarUsuario(idUsuario);
-  res.json(usuario);
+  if (usuario != ""){ 
+    return res.json(usuario);
+}else {
+  return res.json({ error: 'Usuário não encontrado', id: idUsuario})
+}
 });
 
 router.get("/usuarios", async function (req, res) {

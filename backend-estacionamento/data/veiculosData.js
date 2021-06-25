@@ -27,7 +27,7 @@ exports.recuperarVeiculo = function(id){
 }
 
 exports.mostrarVeiculo = function(id){
-    return database.one(
+    return database.query(
         'SELECT * FROM public.veiculos where id = $1;',
         [id]
     )
