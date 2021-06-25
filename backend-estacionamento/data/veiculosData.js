@@ -6,10 +6,10 @@ exports.criarVeiculo = function(veiculo){
     [veiculo.placa, veiculo.cor_veiculo, veiculo.tipo_veiculo])
 }
 
-exports.alterarVeiculo = function(veiculo){
-    return database.one(
+exports.alterarVeiculo = function(veiculo, id){
+    return database.none(
         'UPDATE public.veiculos SET placa=$1, cor_veiculo=$2, tipo_veiculo=$3 WHERE id=$4;',
-        [veiculo.placa, veiculo.cor_veiculo, veiculo.tipo_veiculo, veiculo.id]
+        [veiculo.placa, veiculo.cor_veiculo, veiculo.tipo_veiculo, id]
     )
 }
 exports.deletarVeiculo = function(id){
@@ -27,7 +27,7 @@ exports.recuperarVeiculo = function(id){
 }
 
 exports.mostrarVeiculo = function(id){
-    return database.one(
+    return database.query(
         'SELECT * FROM public.veiculos where id = $1;',
         [id]
     )

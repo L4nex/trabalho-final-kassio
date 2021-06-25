@@ -4,8 +4,8 @@ exports.criarVeiculo = function (veiculo) {
   return veiculoData.criarVeiculo(veiculo);
 };
 
-exports.alterarVeiculo = function (veiculo) {
-  return veiculoData.alterarVeiculo(veiculo);
+exports.alterarVeiculo = function (veiculo, id) {
+  return veiculoData.alterarVeiculo(veiculo, id);
 };
 
 exports.deletarVeiculo = function (id) {

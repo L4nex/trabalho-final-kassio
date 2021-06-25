@@ -6,10 +6,10 @@ exports.criarUsuario = function(usuario){
     [usuario.nome, usuario.email, usuario.telefone, usuario.senha, usuario.foto, usuario.tipo_usuario, new Date(), new Date()])
 }
 
-exports.alterarUsuario = function(usuario){
+exports.alterarUsuario = function(usuario, id){
     return database.query(
         'UPDATE public.usuarios SET nome=$1, email=$2, telefone=$3, senha=$4, foto=$5, tipo_usuario=$6, data_atualizacao=$7 WHERE id=$8;',
-        [usuario.nome, usuario.email, usuario.telefone, usuario.senha, usuario.foto, usuario.tipo_usuario, new Date(), usuario.id]
+        [usuario.nome, usuario.email, usuario.telefone, usuario.senha, usuario.foto, usuario.tipo_usuario, new Date(), id]
     )
 }
 exports.deletarUsuario = function(id){
@@ -20,7 +20,7 @@ exports.deletarUsuario = function(id){
 }
 
 exports.recuperarUsuario = function(id){
-    return database.one(
+    return database.none(
         'UPDATE public.usuarios SET active = true WHERE id=$1;',
         [id]
     )
