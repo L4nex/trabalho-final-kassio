@@ -3,44 +3,56 @@ const router = express.Router();
 const usuariosService = require("../service/usuariosService");
 
 router.post("/usuario", async function (req, res) {
-  const usuario = req.body.usuario;
-  const novoUsuario = await usuariosService.criarUsuario(usuario);
-  res.json({message: "Usuário criado com sucesso!", id: novoUsuario.id})
+  try {
+    const usuario = req.body.usuario;
+    if (!usuario) {
+      throw "Não foi possível inserir o usuário pois os parâmetros estão errados.";
+    }
+    const novoUsuario = await usuariosService.criarUsuario(usuario);
+    res.json({ message: "Usuário criado com sucesso!", id: novoUsuario.id });
+  } catch (e) {
+    res.json({ message: e });
+  }
 });
 
 router.put("/usuario/:id", async function (req, res) {
   const idUsuario = req.params.id;
   const usuario = req.body.usuario;
-  const alterarUsuario = await usuariosService.alterarUsuario(usuario, idUsuario);
-  res.json({message: "Usuário editado com sucesso!"})
+  const alterarUsuario = await usuariosService.alterarUsuario(
+    usuario,
+    idUsuario
+  );
+  res.json({ message: "Usuário editado com sucesso!" });
   res.json(alterarUsuario);
 });
 
 router.delete("/usuario/:id", async function (req, res) {
   const idUsuario = req.params.id;
   await usuariosService.deletarUsuario(idUsuario);
-  res.json({message: "Usuário deletado com sucesso!", id: idUsuario})
+  res.json({ message: "Usuário deletado com sucesso!", id: idUsuario });
 });
 
 router.patch("/usuario/:id/recuperar", async function (req, res) {
   const idUsuario = req.params.id;
   await usuariosService.recuperarUsuario(idUsuario);
-  res.json({message: "Usuário restaurado com sucesso!", id: idUsuario})
+  res.json({ message: "Usuário restaurado com sucesso!", id: idUsuario });
 });
 
 router.get("/usuario/:id", async function (req, res) {
-  const idUsuario = req.params.id;
-  const usuario = await usuariosService.mostrarUsuario(idUsuario);
-  if (usuario != ""){ 
-    return res.json(usuario);
-}else {
-  return res.json({ error: 'Usuário não encontrado', id: idUsuario})
-}
+  try {
+    const idUsuario = req.params.id;
+    const usuario = await usuariosService.mostrarUsuario(idUsuario);
+    if (usuario != "") {
+      return res.json(usuario);
+    } else {
+      return res.json({ error: "Usuário não encontrado", id: idUsuario });
+    }
+  } catch (e) {}
 });
 
 router.get("/usuarios", async function (req, res) {
-    const usuarios = await usuariosService.listarUsuarios();
-    res.json(usuarios)
+  const usuarios = await usuariosService.listarUsuarios();
+  res.json(usuarios);
 });
 
 module.exports = router;
