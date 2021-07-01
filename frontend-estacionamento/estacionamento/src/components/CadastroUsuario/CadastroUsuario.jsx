@@ -5,17 +5,20 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Select from "@material-ui/core/Select";
 import BotaoSubmit from "../BotaoSubmit";
 import api from "../../service/api";
+import "../../assets/style.css";
+import MiniDrawer from "../MenuBar/MiniDrawer";
+
 class CadastroUsuario extends Component {
   constructor() {
     super();
     this.idUsuario = this._handleRecuperaUsu.bind(this);
-    if(!this.idUsuario){
+    if (!this.idUsuario) {
       this.nome = "";
       this.email = "";
       this.telefone = "";
       this.senha = "";
       this.tipoUsuario = 0;
-    } else{
+    } else {
       console.log("aaa")
       api.get(`usuario/${this.idUsuario}`, {}).then((response) => {
         console.log("sadasfasd");
@@ -70,41 +73,45 @@ class CadastroUsuario extends Component {
   }
   render() {
     return (
-      <form className="form_cadastro" onSubmit={this._handleSubmit.bind(this)}>
-        <TextField
-          label="Nome"
-          type="text"
-          autoComplete="current-password"
-          onChange={this._handleAlterouNome.bind(this)}
-        />
-        <TextField
-          label="Email"
-          type="email"
-          autoComplete="current-password"
-          onChange={this._handleAlterouEmail.bind(this)}
-        />
+      <div>
+        <MiniDrawer />
 
-        <TextField
-          onChange={this._handleAlterouTelefone.bind(this)}
-          label="Telefone"
-          type="text"
-          autoComplete="current-password"
-        />
-        <TextField
-          onChange={this._handleAlterouSenha.bind(this)}
-          label="Senha"
-          type="password"
-          autoComplete="current-password"
-        />
-        <br />
-        <InputLabel id="demo-simple-select-label">Tipo usuário</InputLabel>
-        <Select onChange={this._handleAlterouTipoUsuario.bind(this)}>
-          <MenuItem value={1}>Adminsitrador</MenuItem>
-          <MenuItem value={2}>Gerente</MenuItem>
-          <MenuItem value={3}>Operacional</MenuItem>
-        </Select>
-        <BotaoSubmit valor="Cadastrar" />
-      </form>
+        <form className="form_cadastro" onSubmit={this._handleSubmit.bind(this)}>
+          <TextField
+            label="Nome"
+            type="text"
+            autoComplete="current-password"
+            onChange={this._handleAlterouNome.bind(this)}
+          />
+          <TextField
+            label="Email"
+            type="email"
+            autoComplete="current-password"
+            onChange={this._handleAlterouEmail.bind(this)}
+          />
+
+          <TextField
+            onChange={this._handleAlterouTelefone.bind(this)}
+            label="Telefone"
+            type="text"
+            autoComplete="current-password"
+          />
+          <TextField
+            onChange={this._handleAlterouSenha.bind(this)}
+            label="Senha"
+            type="password"
+            autoComplete="current-password"
+          />
+          <br />
+          <InputLabel id="demo-simple-select-label">Tipo usuário</InputLabel>
+          <Select onChange={this._handleAlterouTipoUsuario.bind(this)}>
+            <MenuItem value={1}>Adminsitrador</MenuItem>
+            <MenuItem value={2}>Gerente</MenuItem>
+            <MenuItem value={3}>Operacional</MenuItem>
+          </Select>
+          <BotaoSubmit valor="Cadastrar" />
+        </form>
+      </div>
     );
   }
 }
