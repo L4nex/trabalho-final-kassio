@@ -25,9 +25,7 @@ class CadastroUsuario extends Component {
     if (this.idUsuario) {
       api.get(`usuario/${this.idUsuario}`, {}).then((response) => {
         let usuario = response.data[0];
-        console.log(usuario);
         this.nome = usuario.nome;
-        console.log(this.nome);
         this.email = usuario.email;
         this.telefone = usuario.telefone;
         this.senha = usuario.senha;
@@ -45,8 +43,6 @@ class CadastroUsuario extends Component {
         });
       });
     }
-
-    console.log(this.state);
   }
   _handleAlterouNome(e) {
     this.nome = e.target.value;
@@ -132,12 +128,14 @@ class CadastroUsuario extends Component {
             label="Nome"
             type="text"
             autoComplete="current-password"
+            value={this.state.usuario.nome}
             onChange={this._handleAlterouNome.bind(this)}
           />
           <TextField
             label="Email"
             type="email"
             autoComplete="current-password"
+            value={this.state.usuario.email}
             onChange={this._handleAlterouEmail.bind(this)}
           />
 
@@ -145,12 +143,14 @@ class CadastroUsuario extends Component {
             onChange={this._handleAlterouTelefone.bind(this)}
             label="Telefone"
             type="text"
+            value={this.state.usuario.telefone}
             autoComplete="current-password"
           />
           <TextField
             onChange={this._handleAlterouSenha.bind(this)}
             label="Senha"
             type="password"
+            value={this.state.usuario.senha}
             autoComplete="current-password"
           />
           <br />
