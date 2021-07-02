@@ -9,6 +9,8 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
+import MiniDrawer from "../MenuBar/MiniDrawer";
+import "./style.css";
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -59,7 +61,8 @@ function Usuario() {
 
   return (
     <div>
-      <TableContainer component={Paper}>
+      <MiniDrawer />
+      <TableContainer class="tabela" component={Paper}>
         <Table
           className={classes.table}
           size="small"
