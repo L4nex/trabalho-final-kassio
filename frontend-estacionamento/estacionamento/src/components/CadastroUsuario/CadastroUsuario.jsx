@@ -7,6 +7,7 @@ import BotaoSubmit from "../BotaoSubmit";
 import api from "../../service/api";
 import "../../assets/style.css";
 import MiniDrawer from "../MenuBar/MiniDrawer";
+import "./style.css";
 
 class CadastroUsuario extends Component {
   constructor() {

@@ -2,3 +2,17 @@
     text-decoration: none;
     color: white;
   }
+
+.titulo {
+  color: black;
+}
+
+#color {
+  background-color: #7fff00;
+  color: black;
+}
+
+a {
+  text-decoration: none !important;
+  color: black;
+}

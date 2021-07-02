@@ -1,5 +1,6 @@
 import React from 'react';
 import clsx from 'clsx';
+import { Link } from "react-router-dom";
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
@@ -19,6 +20,8 @@ import PeopleIcon from '@material-ui/icons/People';
 import DriveEtaIcon from '@material-ui/icons/DriveEta';
 import SettingsIcon from '@material-ui/icons/Settings';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import ListAltIcon from '@material-ui/icons/ListAlt';
+import "./style.css";
 
 const drawerWidth = 240;
 
@@ -99,14 +102,16 @@ export default function MiniDrawer() {
 
   return (
     <div className={classes.root}>
+      
       <CssBaseline />
-      <AppBar
+
+      <AppBar 
         position="fixed"
         className={clsx(classes.appBar, {
           [classes.appBarShift]: open,
         })}
       >
-        <Toolbar>
+        <Toolbar id="color">
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -118,9 +123,11 @@ export default function MiniDrawer() {
           >
             <MenuIcon />
           </IconButton>
+          <Link to="/cadastrarUsuarios" class="titulo">
           <Typography variant="h6" noWrap>
             Estacio App
           </Typography>
+          </Link>
         </Toolbar>
       </AppBar>
       <Drawer
@@ -141,20 +148,46 @@ export default function MiniDrawer() {
             {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
           </IconButton>
         </div>
-        <Divider />
         <List>
-          {['Veiculos', 'Mensalistas',].map((text, index) => (
+        <Link to="/">
+          {['Cadastrar Veiculos',].map((text, index) => (
             <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <DriveEtaIcon /> : <PeopleIcon />}</ListItemIcon>
+              <ListItemIcon>{<DriveEtaIcon />}</ListItemIcon>
               <ListItemText primary={text} />
             </ListItem>
           ))}
+        </Link>
+          {['Mensalistas'].map((text, index) => (
+            <Link to="/mensalistas">
+            <ListItem button key={text}>
+              <ListItemIcon>{ <ListAltIcon />}</ListItemIcon>
+              <ListItemText primary={text} />
+            </ListItem>      
+            </Link>      
+          ))}
+          {['Usuários'].map((text, index) => (
+            <Link to="/listarusuarios">
+            <ListItem button key={text}>
+              <ListItemIcon>{ <PeopleIcon />}</ListItemIcon>
+              <ListItemText primary={text} />
+            </ListItem>      
+            </Link>      
+          ))}
+        
         </List>
         <Divider />
         <List>
-          {['Configurações', 'Logout'].map((text, index) => (
+          {['Configurações'].map((text, index) => (
+            <Link to="/">
             <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <SettingsIcon /> : <ExitToAppIcon />}</ListItemIcon>
+              <ListItemIcon>{<SettingsIcon />}</ListItemIcon>
+              <ListItemText primary={text} />
+            </ListItem>
+            </Link>
+          ))}
+          {['Logout'].map((text, index) => (
+            <ListItem button key={text}>
+              <ListItemIcon>{<ExitToAppIcon />}</ListItemIcon>
               <ListItemText primary={text} />
             </ListItem>
           ))}
