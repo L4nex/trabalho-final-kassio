@@ -34,6 +34,6 @@ exports.mostrarRotativo = function(id){
 }
 exports.listarRotativos = function(){
     return database.query(
-        'SELECT * FROM public.rotativos;'
+        'SELECT * FROM public.rotativos WHERE active = true;'
     )
 }

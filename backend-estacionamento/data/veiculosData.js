@@ -34,7 +34,7 @@ exports.mostrarVeiculo = function(id){
 }
 exports.listarVeiculos = function(idMensalista){
     return database.query(
-        'SELECT * FROM public.veiculos WHERE mensalista_id = $1;',
+        'SELECT * FROM public.veiculos WHERE mensalista_id = $1 AND active = true;',
         [idMensalista]
     )
 }
