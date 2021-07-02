@@ -5,6 +5,9 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Select from "@material-ui/core/Select";
 import BotaoSubmit from "../BotaoSubmit";
 import api from "../../service/api";
+import "../../assets/style.css";
+import MiniDrawer from "../MenuBar/MiniDrawer";
+
 class CadastroUsuario extends Component {
   constructor() {
     super();
@@ -117,7 +120,9 @@ class CadastroUsuario extends Component {
   }
   render() {
     return (
-      <section className="sectionBase">
+
+    <section className="sectionBase">
+        <MiniDrawer />
         <form
           className="form_cadastro"
           onSubmit={this._handleSubmit.bind(this)}
@@ -126,26 +131,20 @@ class CadastroUsuario extends Component {
             label="Nome"
             type="text"
             autoComplete="current-password"
-            value={this.state.usuario.nome}
             onChange={this._handleAlterouNome.bind(this)}
-            required
           />
           <TextField
             label="Email"
             type="email"
             autoComplete="current-password"
-            value={this.state.usuario.email}
             onChange={this._handleAlterouEmail.bind(this)}
-            required
           />
 
           <TextField
             onChange={this._handleAlterouTelefone.bind(this)}
-            value={this.state.usuario.telefone}
             label="Telefone"
             type="text"
             autoComplete="current-password"
-            required
           />
           <TextField
             onChange={this._handleAlterouSenha.bind(this)}
@@ -155,7 +154,7 @@ class CadastroUsuario extends Component {
           />
           <br />
           <InputLabel id="demo-simple-select-label">Tipo usuário</InputLabel>
-          <Select onChange={this._handleAlterouTipoUsuario.bind(this)} required>
+          <Select onChange={this._handleAlterouTipoUsuario.bind(this)}>
             <MenuItem value={1}>Adminsitrador</MenuItem>
             <MenuItem value={2}>Gerente</MenuItem>
             <MenuItem value={3}>Operacional</MenuItem>
@@ -166,5 +165,4 @@ class CadastroUsuario extends Component {
     );
   }
 }
-
 export default CadastroUsuario;

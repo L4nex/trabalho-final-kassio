@@ -12,7 +12,7 @@ button{
 }
 
 body{
-    background-color: #292929;
+    background-color: #292929 !important;
 }
 .sectionBase {
     margin-left: 10%;
