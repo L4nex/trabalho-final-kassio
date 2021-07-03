@@ -34,6 +34,6 @@ exports.mostrarMensalista = function(id){
 }
 exports.listarMensalistas = function(){
     return database.query(
-        'SELECT * FROM public.mensalistas;'
+        'SELECT * FROM public.mensalistas WHERE active = true;'
     )
 }

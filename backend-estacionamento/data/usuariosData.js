@@ -36,6 +36,6 @@ exports.mostrarUsuario = function(id){
 
 exports.listarUsuarios = function(){
     return database.query(
-        'SELECT * FROM public.usuarios;'
+        'SELECT * FROM public.usuarios WHERE active = true;'
     )
 }
