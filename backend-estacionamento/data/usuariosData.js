@@ -13,6 +13,7 @@ exports.alterarUsuario = function(usuario, id){
     )
 }
 exports.deletarUsuario = function(id){
+    console.log(id)
     return database.query(
         'UPDATE public.usuarios SET active = false WHERE id=$1;',
         [id]
