@@ -3,6 +3,7 @@ import TextField from "@material-ui/core/TextField";
 import BotaoSubmit from "../BotaoSubmit";
 import api from "../../service/api";
 import { Button } from "@material-ui/core";
+import MiniDrawer from "../MenuBar/MiniDrawer";
 import "./style.css";
 
 class CadastroMensalista extends Component {
@@ -93,12 +94,13 @@ class CadastroMensalista extends Component {
 
   _handleVeiculosMensalista() {
     window.location.assign(
-      "http://localhost:3000/veiculosMensalista?id=" + this.idMensalista
+      "http://localhost:3000/cadastrarVeiculos?id=" + this.idMensalista
     );
   }
   render() {
     return (
       <section className="sectionBase">
+        <MiniDrawer/>
         <form
           className="form_cadastro"
           onSubmit={this._handleSubmit.bind(this)}

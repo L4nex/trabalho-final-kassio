@@ -1,9 +1,14 @@
 .tabela {
     margin-top: 5%;
 }
+<<<<<<< Updated upstream
 
 .font {
     color: black;
     background-color: #7fff00;
     padding-top: 1%;
+=======
+.class_listaUsuario table{
+    background-color: white ;
+>>>>>>> Stashed changes
 }

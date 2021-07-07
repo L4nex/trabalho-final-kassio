@@ -60,7 +60,7 @@ function Usuario() {
   }, []);
 
   return (
-    <div>
+    <section className="class_listaUsuario">
       <MiniDrawer />
       <TableContainer class="tabela" component={Paper}>
         <Table
@@ -108,7 +108,7 @@ function Usuario() {
           </TableBody>
         </Table>
       </TableContainer>
-    </div>
+    </section>
   );
 }
 
