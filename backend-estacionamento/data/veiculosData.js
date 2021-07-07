@@ -2,8 +2,8 @@ const database = require('../database/database')
 
 exports.criarVeiculo = function(veiculo, idMensalista){
     return database.one(
-    'INSERT INTO public.veiculos("placa", "tipo_veiculo", "mensalista_id") VALUES ($1, $2, $3) returning *',
-    [veiculo.placa, veiculo.tipo_veiculo, idMensalista])
+    'INSERT INTO public.veiculos("placa", "tipo_veiculo", "mensalista_id", "active") VALUES ($1, $2, $3, $4) returning *',
+    [veiculo.placa, veiculo.tipo_veiculo, idMensalista, true])
 }
 
 exports.alterarVeiculo = function(veiculo, id){

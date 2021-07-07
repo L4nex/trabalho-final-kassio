@@ -123,7 +123,7 @@ export default function MiniDrawer() {
           >
             <MenuIcon />
           </IconButton>
-          <Link to="/cadastrarUsuarios" class="titulo">
+          <Link to="/" class="titulo">
           <Typography variant="h6" noWrap>
             Estacio App
           </Typography>
@@ -149,8 +149,8 @@ export default function MiniDrawer() {
           </IconButton>
         </div>
         <List>
-        <Link to="/">
-          {['Cadastrar Veiculos',].map((text, index) => (
+        <Link to="/cadastrarMensalistas">
+          {['Cadastrar Mensalistas',].map((text, index) => (
             <ListItem button key={text}>
               <ListItemIcon>{<DriveEtaIcon />}</ListItemIcon>
               <ListItemText primary={text} />
@@ -158,7 +158,7 @@ export default function MiniDrawer() {
           ))}
         </Link>
           {['Mensalistas'].map((text, index) => (
-            <Link to="/mensalistas">
+            <Link to="/listarMensalistas">
             <ListItem button key={text}>
               <ListItemIcon>{ <ListAltIcon />}</ListItemIcon>
               <ListItemText primary={text} />
@@ -167,6 +167,14 @@ export default function MiniDrawer() {
           ))}
           {['Usuários'].map((text, index) => (
             <Link to="/listarusuarios">
+            <ListItem button key={text}>
+              <ListItemIcon>{ <PeopleIcon />}</ListItemIcon>
+              <ListItemText primary={text} />
+            </ListItem>      
+            </Link>      
+          ))}
+           {['Cadastrar Usuários'].map((text, index) => (
+            <Link to="/cadastrarUsuarios">
             <ListItem button key={text}>
               <ListItemIcon>{ <PeopleIcon />}</ListItemIcon>
               <ListItemText primary={text} />
@@ -186,10 +194,12 @@ export default function MiniDrawer() {
             </Link>
           ))}
           {['Logout'].map((text, index) => (
+            <Link to="/login">
             <ListItem button key={text}>
               <ListItemIcon>{<ExitToAppIcon />}</ListItemIcon>
               <ListItemText primary={text} />
             </ListItem>
+            </Link>
           ))}
         </List>
       </Drawer>

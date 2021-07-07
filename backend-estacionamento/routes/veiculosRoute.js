@@ -10,7 +10,22 @@ router.post("/mensalista/:idMensalista/veiculo",jwt.validator, async function (r
   res.json({ message: "Veiculo criado com sucesso!", id: novoVeiculo.id })
 });
 
-router.put("/mensalista/:idMensalista/veiculo/:id",jwt.validator, async function (req, res) {
+router.post("/mensalista/:idMensalista/veiculos", jwt.validator, async function (req, res) {
+  const veiculos = req.body.veiculos;
+  const idMensalista = req.params.idMensalista;
+  var veiculosArray = [];
+  for(var i in veiculos){
+    veiculosArray.push([veiculos[i]])
+  }
+  console.log(veiculosArray)
+  veiculosArray.forEach(veiculo =>{
+    console.log(veiculo)
+    veiculosService.criarVeiculo(veiculo[0], idMensalista)
+  })
+  res.json({ message: "Veiculos criados com sucesso!", veiculos: veiculosArray })
+});
+
+router.put("/mensalista/:idMensalista/veiculo/:id", async function (req, res) {
   const idVeiculo = req.params.id;
   const veiculo = req.body.veiculo;
   const alterarVeiculo = await veiculosService.alterarVeiculo(veiculo, idVeiculo);

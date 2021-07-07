@@ -38,24 +38,14 @@ const useStyles = makeStyles({
 
 function Usuario() {
   const classes = useStyles();
-  const [usuarios, setUsuarios] = useState([]);
+  const [mensalistas, setMensalistas] = useState([]);
 
-  async function handleDeleteUsuario(id) {
-    try {
-      await api.delete(`usuario/${id}`, {});
-      setUsuarios(usuarios.filter((usuario) => usuario.id !== id));
-    } catch (e) {
-      alert(e);
-    }
-  }
-
-  function handleEditaUsuario(id) {
-    window.location.assign("http://localhost:3000/cadastrarUsuarios?id=" + id);
+  function handleEditaMensalistas(id) {
+    window.location.assign("http://localhost:3000/cadastrarMensalistas?id=" + id);
   }
   useEffect(() => {
-    api.get("usuarios", {}).then((response) => {
-      console.log(response);
-      setUsuarios(response.data);
+    api.get("mensalistas", {}).then((response) => {
+      setMensalistas(response.data);
     });
   }, []);
 
@@ -70,37 +60,28 @@ function Usuario() {
         >
           <TableHead>
             <StyledTableRow>
-              <StyledTableCell class="font" align="center">Nome</StyledTableCell>
-              <StyledTableCell class="font" align="center">Email</StyledTableCell>
-              <StyledTableCell class="font" align="center">Telefone</StyledTableCell>
-              <StyledTableCell class="font" align="center"></StyledTableCell>
-              <StyledTableCell class="font" align="center"></StyledTableCell>
+              <StyledTableCell align="center">Nome</StyledTableCell>
+              <StyledTableCell align="center">CPF</StyledTableCell>
+              <StyledTableCell align="center">Data de entrada</StyledTableCell>
+              <StyledTableCell align="center"></StyledTableCell>
             </StyledTableRow>
           </TableHead>
           <TableBody>
-            {usuarios.map((usuario, index) => (
+            {mensalistas.map((mensalista, index) => (
               <StyledTableRow key={index}>
-                <StyledTableCell align="center">{usuario.nome}</StyledTableCell>
+                <StyledTableCell align="center">{mensalista.nome}</StyledTableCell>
                 <StyledTableCell align="center">
-                  {usuario.email}
+                  {mensalista.cpf}
                 </StyledTableCell>
                 <StyledTableCell align="center">
-                  {usuario.telefone}
+                  {mensalista.data_entrada}
                 </StyledTableCell>
                 <StyledTableCell align="center">
                   <Button
                     variant="contained"
-                    onClick={() => handleEditaUsuario(usuario.id)}
+                    onClick={() => handleEditaMensalistas(mensalista.id)}
                   >
                     Editar
-                  </Button>
-                </StyledTableCell>
-                <StyledTableCell align="center">
-                  <Button
-                    variant="contained"
-                    onClick={() => handleDeleteUsuario(usuario.id)}
-                  >
-                    Excluir
                   </Button>
                 </StyledTableCell>
               </StyledTableRow>
