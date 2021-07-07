@@ -4,6 +4,7 @@ import CadastroMensalista from "./components/CadastroMensalista/CadastroMensalis
 import CadastroUsuario from "./components/CadastroUsuario";
 import CadastroVeiculo from "./components/CadastroVeiculo";
 import ListarUsuarios from "./components/ListarUsuarios";
+import Login from "./components/Login";
 
 function Routes() {
   return (
@@ -14,6 +15,7 @@ function Routes() {
         <Route path="/listarUsuarios" component={ListarUsuarios} />
         <Route path="/cadastrarMensalistas" component={CadastroMensalista} />
         <Route path="/cadastrarVeiculos" component={CadastroVeiculo} />
+        <Route path="/login" component={Login} />
       </Switch>
     </BrowserRouter>
   );
