@@ -70,11 +70,11 @@ function Usuario() {
         >
           <TableHead>
             <StyledTableRow>
-              <StyledTableCell align="center">Nome</StyledTableCell>
-              <StyledTableCell align="center">Email</StyledTableCell>
-              <StyledTableCell align="center">Telefone</StyledTableCell>
-              <StyledTableCell align="center"></StyledTableCell>
-              <StyledTableCell align="center"></StyledTableCell>
+              <StyledTableCell class="font" align="center">Nome</StyledTableCell>
+              <StyledTableCell class="font" align="center">Email</StyledTableCell>
+              <StyledTableCell class="font" align="center">Telefone</StyledTableCell>
+              <StyledTableCell class="font" align="center"></StyledTableCell>
+              <StyledTableCell class="font" align="center"></StyledTableCell>
             </StyledTableRow>
           </TableHead>
           <TableBody>

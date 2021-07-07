@@ -120,18 +120,18 @@ class CadastroUsuario extends Component {
 
     <section className="sectionBase">
         <MiniDrawer />
-        <form
+        <form 
           className="form_cadastro"
           onSubmit={this._handleSubmit.bind(this)}
         >
-          <TextField
+          <TextField 
             label="Nome"
             type="text"
             autoComplete="current-password"
             value={this.state.usuario.nome}
             onChange={this._handleAlterouNome.bind(this)}
           />
-          <TextField
+          <TextField 
             label="Email"
             type="email"
             autoComplete="current-password"
@@ -139,7 +139,7 @@ class CadastroUsuario extends Component {
             onChange={this._handleAlterouEmail.bind(this)}
           />
 
-          <TextField
+          <TextField 
             onChange={this._handleAlterouTelefone.bind(this)}
             label="Telefone"
             type="text"
