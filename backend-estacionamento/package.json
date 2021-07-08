@@ -1,7 +1,7 @@
 {
   "name": "backend-estacionamento",
   "version": "1.0.0",
-  "description": "Back end do sistema de estacionamento",
+  "description": "Backend do sistema de estacionamento",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -15,11 +15,8 @@
     "dotenv-safe": "^8.2.0",
     "express": "^4.17.1",
     "jest": "^27.0.5",
-<<<<<<< HEAD
     "moment": "^2.29.1",
-=======
     "jsonwebtoken": "^8.5.1",
->>>>>>> 21d829f77c01592f2dd12d82902eb1138ad54801
     "nodemon": "^2.0.9",
     "pg": "^8.6.0",
     "pg-hstore": "^2.3.4",
