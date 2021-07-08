@@ -25,7 +25,7 @@ router.post("/mensalista/:idMensalista/veiculos", jwt.validator, async function 
 });
 
 router.put("/mensalista/:idMensalista/veiculo/:id", async function (req, res) {
-  const idVeiculo = req.params.id;
+  const idVeiculo = req.params.id;1
   const veiculo = req.body.veiculo;
   const alterarVeiculo = await veiculosService.alterarVeiculo(veiculo, idVeiculo);
   res.json({ message: "Veiculo editado com sucesso!" });
@@ -34,7 +34,6 @@ router.put("/mensalista/:idMensalista/veiculo/:id", async function (req, res) {
 
 router.delete("/mensalista/:idMensalista/veiculo/:id",jwt.validator, async function (req, res) {
   const idVeiculo = req.params.id;
-  console.log(idVeiculo)
   await veiculosService.deletarVeiculo(idVeiculo);
   res.json({ message: "Veiculo deletado com sucesso!", id: idVeiculo })
 });

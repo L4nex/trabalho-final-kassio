@@ -51,7 +51,6 @@ router.get("/pagamentoMensalista/:id", jwt.validator, async function (req, res) 
   if (mensalista[0] !== undefined) {
     var diff = moment(mensalista[0].data_entrada, "DD/MM/YYYY").diff(moment(new Date(), "DD/MM/YYYY"));
     var days = moment.duration(diff).asDays().toFixed(0);
-    console.log(days)
     let valorPagar = 0;
     if (days <= 30) {
       valorPagar = 250;
