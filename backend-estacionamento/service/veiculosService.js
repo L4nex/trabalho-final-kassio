@@ -1,7 +1,7 @@
 const veiculoData = require("../data/veiculosData");
 
-exports.criarVeiculo = function (veiculo) {
-  return veiculoData.criarVeiculo(veiculo);
+exports.criarVeiculo = function (veiculo, idMensalista) {
+  return veiculoData.criarVeiculo(veiculo, idMensalista);
 };
 
 exports.alterarVeiculo = function (veiculo, id) {
@@ -20,6 +20,6 @@ exports.mostrarVeiculo = function (id) {
   return veiculoData.mostrarVeiculo(id);
 };
 
-exports.listarVeiculos = function () {
-  return veiculoData.listarVeiculos();
+exports.listarVeiculos = function (idMensalista) {
+  return veiculoData.listarVeiculos(idMensalista);
 };

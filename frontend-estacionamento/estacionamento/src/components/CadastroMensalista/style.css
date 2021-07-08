@@ -1,0 +1,5 @@
+.section_botoesCadastroMensalista{
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+}

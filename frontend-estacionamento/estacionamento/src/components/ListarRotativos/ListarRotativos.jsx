@@ -36,26 +36,38 @@ const useStyles = makeStyles({
   },
 });
 
-function Usuario() {
+function Rotativo() {
   const classes = useStyles();
-  const [usuarios, setUsuarios] = useState([]);
+  const [rotativos, setRotativos] = useState([]);
 
-  async function handleDeleteUsuario(id) {
+  async function handleDeleteRotativo(id) {
     try {
-      await api.delete(`usuario/${id}`, {});
-      setUsuarios(usuarios.filter((usuario) => usuario.id !== id));
+      await api.delete(`rotativo/${id}`, {});
+      setRotativos(rotativos.filter((rotativo) => rotativo.id !== id));
     } catch (e) {
       alert(e);
     }
   }
-
-  function handleEditaUsuario(id) {
-    window.location.assign("http://localhost:3000/cadastrarUsuarios?id=" + id);
+  async function handlePagar(id) {
+    let valorPagar = 0;
+    try {
+        await api.get(`pagamentoRotativo/${id}`, {}).then((response) => {
+            valorPagar = response.data.toFixed(2);
+        });
+      } catch (e) {
+        alert(e);
+    }
+    var resultado = window.confirm(
+      "O valor a pagar é : R$" + valorPagar + " deseja continuar?"
+    );
+    if (resultado === true) {
+      handleDeleteRotativo(id);
+      alert("A saída foi registrada com sucesso!");
+    }
   }
   useEffect(() => {
-    api.get("usuarios", {}).then((response) => {
-      console.log(response);
-      setUsuarios(response.data);
+    api.get("rotativos", {}).then((response) => {
+      setRotativos(response.data);
     });
   }, []);
 
@@ -70,37 +82,32 @@ function Usuario() {
         >
           <TableHead>
             <StyledTableRow>
-              <StyledTableCell class="font" align="center">Nome</StyledTableCell>
-              <StyledTableCell class="font" align="center">Email</StyledTableCell>
-              <StyledTableCell class="font" align="center">Telefone</StyledTableCell>
+              <StyledTableCell class="font" align="center">
+                Placa
+              </StyledTableCell>
+              <StyledTableCell class="font" align="center">
+                Tipo de veiculo
+              </StyledTableCell>
+              <StyledTableCell class="font" align="center"></StyledTableCell>
               <StyledTableCell class="font" align="center"></StyledTableCell>
               <StyledTableCell class="font" align="center"></StyledTableCell>
             </StyledTableRow>
           </TableHead>
           <TableBody>
-            {usuarios.map((usuario, index) => (
+            {rotativos.map((rotativo, index) => (
               <StyledTableRow key={index}>
-                <StyledTableCell align="center">{usuario.nome}</StyledTableCell>
                 <StyledTableCell align="center">
-                  {usuario.email}
+                  {rotativo.placa}
                 </StyledTableCell>
                 <StyledTableCell align="center">
-                  {usuario.telefone}
-                </StyledTableCell>
-                <StyledTableCell align="center">
-                  <Button
-                    variant="contained"
-                    onClick={() => handleEditaUsuario(usuario.id)}
-                  >
-                    Editar
-                  </Button>
+                  {rotativo.tipo_veiculo}
                 </StyledTableCell>
                 <StyledTableCell align="center">
                   <Button
                     variant="contained"
-                    onClick={() => handleDeleteUsuario(usuario.id)}
+                    onClick={() => handlePagar(rotativo.id)}
                   >
-                    Excluir
+                    Saiu
                   </Button>
                 </StyledTableCell>
               </StyledTableRow>
@@ -112,4 +119,4 @@ function Usuario() {
   );
 }
 
-export default Usuario;
+export default Rotativo;

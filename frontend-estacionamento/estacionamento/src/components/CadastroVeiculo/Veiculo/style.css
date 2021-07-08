@@ -1,0 +1,7 @@
+.class-veiculo{
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    font-size: 20px;
+    background-color: #FFF;
+}

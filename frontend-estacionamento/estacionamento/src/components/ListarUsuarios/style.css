@@ -1,0 +1,14 @@
+.tabela {
+    margin-top: 5%;
+    margin-left: 6%;
+    margin-right: 1%;
+    border: 1px solid rgb(184, 181, 181);
+}
+.font {
+    color: black;
+    background-color: #7fff00;
+    padding-top: 1%;
+}
+.class_listaUsuario table{
+    background-color: white ;
+}

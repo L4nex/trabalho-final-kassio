@@ -7,3 +7,17 @@
 .form_cadastro input{
     font-size: 30px;
 }
+button{
+    background-color: #7cfc00 !important;
+}
+
+body{
+    background-color: white;
+}
+.sectionBase {
+    margin-left: 10%;
+    margin-right: 10%;
+    background-color: #FFF;
+    border-radius: 0px 0px 10px 10px;
+    box-shadow: 4px 5px 10px #000;
+}

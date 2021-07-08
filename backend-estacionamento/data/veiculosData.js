@@ -1,15 +1,15 @@
 const database = require('../database/database')
 
-exports.criarVeiculo = function(veiculo){
+exports.criarVeiculo = function(veiculo, idMensalista){
     return database.one(
-    'INSERT INTO public.veiculos("placa", "cor_veiculo", "tipo_veiculo") VALUES ($1, $2, $3) returning *',
-    [veiculo.placa, veiculo.cor_veiculo, veiculo.tipo_veiculo])
+    'INSERT INTO public.veiculos("placa", "tipo_veiculo", "mensalista_id", "active") VALUES ($1, $2, $3, $4) returning *',
+    [veiculo.placa, veiculo.tipo_veiculo, idMensalista, true])
 }
 
 exports.alterarVeiculo = function(veiculo, id){
     return database.none(
-        'UPDATE public.veiculos SET placa=$1, cor_veiculo=$2, tipo_veiculo=$3 WHERE id=$4;',
-        [veiculo.placa, veiculo.cor_veiculo, veiculo.tipo_veiculo, id]
+        'UPDATE public.veiculos SET placa=$1, tipo_veiculo=$2 WHERE id=$3;',
+        [veiculo.placa, veiculo.tipo_veiculo, id]
     )
 }
 exports.deletarVeiculo = function(id){
@@ -28,12 +28,13 @@ exports.recuperarVeiculo = function(id){
 
 exports.mostrarVeiculo = function(id){
     return database.query(
-        'SELECT * FROM public.veiculos where id = $1;',
+        'SELECT * FROM public.veiculos WHERE id = $1;',
         [id]
     )
 }
-exports.listarVeiculos = function(){
+exports.listarVeiculos = function(idMensalista){
     return database.query(
-        'SELECT * FROM public.veiculos;'
+        'SELECT * FROM public.veiculos WHERE mensalista_id = $1 AND active = true;',
+        [idMensalista]
     )
 }
