@@ -12,13 +12,12 @@ router.post("/mensalista/:idMensalista/veiculo", async function (req, res) {
 router.post("/mensalista/:idMensalista/veiculos", async function (req, res) {
   const veiculos = req.body.veiculos;
   const idMensalista = req.params.idMensalista;
+  
   var veiculosArray = [];
   for(var i in veiculos){
     veiculosArray.push([veiculos[i]])
-  }
-  console.log(veiculosArray)
+  } 
   veiculosArray.forEach(veiculo =>{
-    console.log(veiculo)
     veiculosService.criarVeiculo(veiculo[0], idMensalista)
   })
   res.json({ message: "Veiculos criados com sucesso!", veiculos: veiculosArray })
@@ -34,6 +33,7 @@ router.put("/mensalista/:idMensalista/veiculo/:id", async function (req, res) {
 
 router.delete("/mensalista/:idMensalista/veiculo/:id", async function (req, res) {
   const idVeiculo = req.params.id;
+  console.log(idVeiculo)
   await veiculosService.deletarVeiculo(idVeiculo);
   res.json({ message: "Veiculo deletado com sucesso!", id: idVeiculo })
 });

@@ -2,7 +2,7 @@ const database = require('../database/database')
 
 exports.criarRotativo = function(rotativo){
     return database.one(
-    'INSERT INTO public.rotativos("placa", "tipo_veiculo", "data_entrada") VALUES ($1, $2, $3) returning *',
+    'INSERT INTO public.rotativos("placa", "tipo_veiculo", "data_entrada", "active") VALUES ($1, $2, $3, true) returning *',
     [rotativo.placa, rotativo.tipo_veiculo, new Date()])
 }
 
