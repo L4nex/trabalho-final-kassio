@@ -48,7 +48,23 @@ function Rotativo() {
       alert(e);
     }
   }
-
+  async function handlePagar(id) {
+    let valorPagar = 0;
+    try {
+        await api.get(`pagamentoRotativo/${id}`, {}).then((response) => {
+            valorPagar = response.data.toFixed(2);
+        });
+      } catch (e) {
+        alert(e);
+    }
+    var resultado = window.confirm(
+      "O valor a pagar é : R$" + valorPagar + " deseja continuar?"
+    );
+    if (resultado === true) {
+      handleDeleteRotativo(id);
+      alert("A saída foi registrada com sucesso!");
+    }
+  }
   useEffect(() => {
     api.get("rotativos", {}).then((response) => {
       setRotativos(response.data);
@@ -72,9 +88,7 @@ function Rotativo() {
               <StyledTableCell class="font" align="center">
                 Tipo de veiculo
               </StyledTableCell>
-              <StyledTableCell class="font" align="center">
-                
-              </StyledTableCell>
+              <StyledTableCell class="font" align="center"></StyledTableCell>
               <StyledTableCell class="font" align="center"></StyledTableCell>
               <StyledTableCell class="font" align="center"></StyledTableCell>
             </StyledTableRow>
@@ -91,7 +105,7 @@ function Rotativo() {
                 <StyledTableCell align="center">
                   <Button
                     variant="contained"
-                    onClick={() => handleDeleteRotativo(rotativo.id)}
+                    onClick={() => handlePagar(rotativo.id)}
                   >
                     Saiu
                   </Button>
