@@ -113,6 +113,7 @@ class CadastroMensalista extends Component {
             onChange={this._handleAlterouNome.bind(this)}
             required
           />
+          
           <TextField
             label="Cpf"
             type="cpf"
@@ -121,6 +122,7 @@ class CadastroMensalista extends Component {
             onChange={this._handleAlterouCpf.bind(this)}
             requirde
           />
+          
           <TextField
           type="text"
           autoComplete="current-password"

@@ -39,17 +39,9 @@ class CadastroVeiculo extends Component {
       veiculos: novoVeiculoArray,
     };
     this.setState(novoState);
+    this._handleGravaVeiculos(this);
   }
-  apagarVeiculo(indice) {
-    let arrayVeiculos = this.state.veiculos;
-    api.delete(`mensalista/${this.idMensalista}/veiculo/${arrayVeiculos[indice].id}`, {}).then((res) => {
-      alert(res.data.message)
-    });
-    arrayVeiculos.splice(indice, 1);
-    this.setState({ veiculos: arrayVeiculos });
-  }
-  salvarVeiculos() {
-    console.log(this.state.veiculos);
+  _handleGravaVeiculos() {
     api
       .post(`mensalista/${this.idMensalista}/veiculos`, {
         veiculos: this.state.veiculos,
@@ -58,13 +50,25 @@ class CadastroVeiculo extends Component {
         alert(res.data.message);
       });
   }
+  apagarVeiculo(indice) {
+    let arrayVeiculos = this.state.veiculos;
+    api
+      .delete(
+        `mensalista/${this.idMensalista}/veiculo/${arrayVeiculos[indice].id}`,
+        {}
+      )
+      .then((res) => {
+        alert(res.data.message);
+      });
+    arrayVeiculos.splice(indice, 1);
+    this.setState({ veiculos: arrayVeiculos });
+  }
   render() {
     return (
       <section className="sectionBase">
         <MiniDrawer />
         <FormularioCadastroVeiculo
           criarVeiculo={this.criarVeiculo.bind(this)}
-          salvarVeiculos={this.salvarVeiculos.bind(this)}
         />
         <main className="main-listaVeiculos">
           <ListaVeiculos
