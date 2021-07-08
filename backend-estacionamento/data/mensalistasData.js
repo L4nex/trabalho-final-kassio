@@ -37,3 +37,10 @@ exports.listarMensalistas = function(){
         'SELECT * FROM public.mensalistas WHERE active = true;'
     )
 }
+
+exports.retornaData = function(id){
+    return database.query(
+        'SELECT data_entrada FROM public.mensalistas WHERE id = $1',
+        [id]
+    );
+}

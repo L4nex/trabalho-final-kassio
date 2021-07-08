@@ -23,3 +23,7 @@ exports.mostrarMensalista = function (id) {
 exports.listarMensalistas = function () {
   return mensalistaData.listarMensalistas();
 };
+
+exports.retornaData = function (id) {
+  return mensalistaData.retornaData(id);
+}
