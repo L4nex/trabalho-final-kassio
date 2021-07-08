@@ -44,4 +44,20 @@ router.get("/rotativos",jwt.validator, async function (req, res) {
   res.json(rotativos)
 });
 
+router.get("/pagamentoRotativo/:id", jwt.validator, async function (req, res) {
+  console.log('sad')
+  const rotativo = await rotativosService.retornaData(req.params.id);
+  var diff = Math.abs(rotativo.data_entrada - new Date());
+  var minutes = Math.floor((diff/1000)/60);
+  var hours = Math.floor(minutes/60);
+  var days = Math.floor(hours/24);
+  let valorPagar = 0;
+  if (minutes > 300) {
+    valorPagar = 30 * days;
+  } else {
+    valorPagar = minutes * 0.15;
+  }
+  res.json(valorPagar);
+});
+
 module.exports = router;
