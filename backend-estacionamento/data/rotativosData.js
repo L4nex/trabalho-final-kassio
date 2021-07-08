@@ -37,3 +37,10 @@ exports.listarRotativos = function(){
         'SELECT * FROM public.rotativos WHERE active = true;'
     )
 }
+
+exports.retornaData = function(id){
+    return database.one(
+        'SELECT data_entrada FROM public.rotativos WHERE id = $1',
+        [id]
+    );
+}

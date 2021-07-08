@@ -23,3 +23,7 @@ exports.mostrarRotativo = function (id) {
 exports.listarRotativos = function () {
   return rotativoData.listarRotativos();
 };
+
+exports.retornaData = function (id) {
+  return rotativoData.retornaData(id);
+}

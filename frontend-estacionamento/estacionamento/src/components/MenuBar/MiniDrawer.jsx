@@ -194,10 +194,12 @@ export default function MiniDrawer() {
             </Link>
           ))}
           {['Logout'].map((text, index) => (
+            <Link to="/login">
             <ListItem button key={text}>
               <ListItemIcon>{<ExitToAppIcon />}</ListItemIcon>
               <ListItemText primary={text} />
             </ListItem>
+            </Link>
           ))}
         </List>
       </Drawer>

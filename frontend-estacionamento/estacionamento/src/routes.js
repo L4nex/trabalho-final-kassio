@@ -7,6 +7,7 @@ import CadastroVeiculo from "./components/CadastroVeiculo";
 import ListarMensalistas from "./components/ListarMensalistas";
 import ListarRotativos from "./components/ListarRotativos";
 import ListarUsuarios from "./components/ListarUsuarios";
+import Login from "./components/Login";
 import Sorteador from "./padrao";
 
 function Routes() {
@@ -19,6 +20,7 @@ function Routes() {
         <Route path="/listarUsuarios" component={ListarUsuarios} />
         <Route path="/cadastrarMensalistas" component={CadastroMensalista} />
         <Route path="/cadastrarVeiculos" component={CadastroVeiculo} />
+        <Route path="/login" component={Login} />
         <Route path="/listarMensalistas" component={ListarMensalistas} />
         <Route path="/cadastrarRotativo" component={CadastroRotativo} />
       </Switch>
