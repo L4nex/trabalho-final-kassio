@@ -48,7 +48,7 @@ class Login extends Component {
       <div id="teste">
         <h1>Login</h1>
         <form className="form_cadastro" onClick={this._handleSubmit.bind(this)}>
-            <div style={{width: '1230px', textAlign: 'center'}}>
+            <div>
                 <TextField
                     label="E-mail"
                     size="small"
@@ -56,7 +56,7 @@ class Login extends Component {
                     required
                 />
             </div>
-            <div style={{width: '1230px', textAlign: 'center'}}>
+            <div style={{marginTop: '30px'}}>
                 <TextField
                     type="password"
                     label="Senha"
@@ -64,7 +64,7 @@ class Login extends Component {
                     required
                 />
             </div>
-          <div className="botao_submit" style={{textAlign: 'center', marginTop: '20px'}}>
+          <div className="botao_submit" style={{marginTop: '60px'}}>
                 <Button variant="contained" color="primary" type="submit">Login</Button>
             </div>
         </form>

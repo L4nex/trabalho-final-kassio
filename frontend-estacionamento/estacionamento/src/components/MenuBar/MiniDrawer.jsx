@@ -21,6 +21,7 @@ import DriveEtaIcon from '@material-ui/icons/DriveEta';
 import SettingsIcon from '@material-ui/icons/Settings';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import ListAltIcon from '@material-ui/icons/ListAlt';
+import GroupAddIcon from '@material-ui/icons/GroupAdd';
 import "./style.css";
 
 const drawerWidth = 240;
@@ -176,7 +177,7 @@ export default function MiniDrawer() {
            {['Cadastrar Usuários'].map((text, index) => (
             <Link to="/cadastrarUsuarios">
             <ListItem button key={text}>
-              <ListItemIcon>{ <PeopleIcon />}</ListItemIcon>
+              <ListItemIcon>{ <GroupAddIcon />}</ListItemIcon>
               <ListItemText primary={text} />
             </ListItem>      
             </Link>      
