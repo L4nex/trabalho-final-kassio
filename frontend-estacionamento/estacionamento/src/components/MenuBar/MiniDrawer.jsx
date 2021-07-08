@@ -127,7 +127,7 @@ export default function MiniDrawer() {
           </IconButton>
           <Link to="/" class="titulo">
             <Typography variant="h6" noWrap>
-              Estacio App
+              EstacioApp
             </Typography>
           </Link>
         </Toolbar>
