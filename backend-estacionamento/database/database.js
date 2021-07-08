@@ -1,7 +1,7 @@
 const pgp = require('pg-promise')();
 const db = pgp({
     user: 'postgres',
-    password: 'Senha123',
+    password: 'luizbnu321',
     host: 'localhost',
     port: '5432',
     database: 'estacionamento'
