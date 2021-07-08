@@ -48,7 +48,7 @@ class CadastroRotativo extends Component {
             onChange={this._handleMudancaPlaca.bind(this)}
             required
           />
-          <InputLabel id="demo-simple-select-label">Tipo usuário</InputLabel>
+          <InputLabel id="demo-simple-select-label">Tipo veículo</InputLabel>
           <Select onChange={this._handleMudancaTipoVeiculo.bind(this)} required>
             <MenuItem value={"Carro"}>Carro</MenuItem>
             <MenuItem value={"Moto"}>Moto</MenuItem>

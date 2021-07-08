@@ -39,16 +39,16 @@ class CadastroVeiculo extends Component {
       veiculos: novoVeiculoArray,
     };
     this.setState(novoState);
-    this._handleGravaVeiculos(this);
+    api
+    .post(`mensalista/${this.idMensalista}/veiculos`, {
+      veiculos: novoVeiculoArray,
+    })
+    .then((res) => {
+      alert(res.data.message);
+    });
   }
   _handleGravaVeiculos() {
-    api
-      .post(`mensalista/${this.idMensalista}/veiculos`, {
-        veiculos: this.state.veiculos,
-      })
-      .then((res) => {
-        alert(res.data.message);
-      });
+
   }
   apagarVeiculo(indice) {
     let arrayVeiculos = this.state.veiculos;

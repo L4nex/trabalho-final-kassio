@@ -156,7 +156,7 @@ class CadastroUsuario extends Component {
           <br />
           <InputLabel id="demo-simple-select-label">Tipo usuário</InputLabel>
           <Select onChange={this._handleAlterouTipoUsuario.bind(this)}>
-            <MenuItem value={1}>Adminsitrador</MenuItem>
+            <MenuItem value={1}>Administrador</MenuItem>
             <MenuItem value={2}>Gerente</MenuItem>
             <MenuItem value={3}>Operacional</MenuItem>
           </Select>
