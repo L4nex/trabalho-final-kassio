@@ -45,7 +45,6 @@ router.get("/rotativos",jwt.validator, async function (req, res) {
 });
 
 router.get("/pagamentoRotativo/:id", jwt.validator, async function (req, res) {
-  console.log('sad')
   const rotativo = await rotativosService.retornaData(req.params.id);
   var diff = Math.abs(rotativo.data_entrada - new Date());
   var minutes = Math.floor((diff/1000)/60);
