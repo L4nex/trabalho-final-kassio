@@ -1,14 +1,15 @@
 const express = require("express");
 const router = express.Router();
 const rotativosService = require("../service/rotativosSerivce");
+const jwt = require('../jwtValidator');
 
-router.post("/rotativo", async function (req, res) {
+router.post("/rotativo",jwt.validator, async function (req, res) {
   const rotativo = req.body.rotativo;
   const novoRotativo = await rotativosService.criarRotativo(rotativo);
   res.json({ message: "Rotativo criado com sucesso!", id: novoRotativo.id })
 });
 
-router.put("/rotativo/:id", async function (req, res) {
+router.put("/rotativo/:id",jwt.validator, async function (req, res) {
   const idRotativo = req.params.id;
   const rotativo = req.body.rotativo;
   const alterarRotativo = await rotativosService.alterarRotativo(rotativo, idRotativo);
@@ -16,19 +17,19 @@ router.put("/rotativo/:id", async function (req, res) {
   res.json(alterarRotativo);
 });
 
-router.delete("/rotativo/:id", async function (req, res) {
+router.delete("/rotativo/:id",jwt.validator, async function (req, res) {
   const idRotativo = req.params.id;
   await rotativosService.deletarRotativo(idRotativo);
   res.json({ message: "Rotativo deletado com sucesso!", id: idRotativo })
 });
 
-router.patch("/rotativo/:id/recuperar", async function (req, res) {
+router.patch("/rotativo/:id/recuperar",jwt.validator, async function (req, res) {
   const idRotativo = req.params.id;
   await rotativosService.recuperarRotativo(idRotativo);
   res.json({ message: "Rotativo restaurado com sucesso!", id: idRotativo })
 });
 
-router.get("/rotativo/:id", async function (req, res) {
+router.get("/rotativo/:id",jwt.validator, async function (req, res) {
   const idRotativo = req.params.id;
   const rotativo = await rotativosService.mostrarRotativo(idRotativo);
     if (rotativo != ""){ 
@@ -38,7 +39,7 @@ router.get("/rotativo/:id", async function (req, res) {
   } 
 });
 
-router.get("/rotativos", async function (req, res) {
+router.get("/rotativos",jwt.validator, async function (req, res) {
   const rotativos = await rotativosService.listarRotativos();
   res.json(rotativos)
 });
