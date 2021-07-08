@@ -1,11 +1,14 @@
 h1{
     text-align: center;
-    margin-top: 8%;
-    font-size: 30px;
+    margin-top: 10%;
+    font-size: 50px;
 }
 .form_cadastro{
     display: flex;
+    text-align: center;
     flex-direction: column;
+    padding-top: 5%;
+    padding-bottom: 5%;
     margin-left: 5%;
     margin-right: 5%;
     background-color: white;
@@ -13,4 +16,9 @@ h1{
 
 #teste {
     background-color: white;
+    border: 3px solid black;
+    border-radius: 20px;
+    margin-top: 5%;
+    margin-left: 35%;
+    margin-right: 35%;
 }
